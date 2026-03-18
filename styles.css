@@ -152,7 +152,7 @@ body {
    ================================================ */
 .profile-block {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: minmax(240px, 280px) 1fr;
   gap: 56px;
   align-items: start;
 }
@@ -352,6 +352,7 @@ body {
   color: var(--blue-accent);
   text-decoration: none;
   font-weight: 400;
+  overflow-wrap: anywhere;
   transition: color 0.2s;
 }
 
@@ -381,6 +382,18 @@ body {
 /* ================================================
    RESPONSIVE
    ================================================ */
+@media (max-width: 1024px) {
+  .header-inner,
+  .main-wrapper {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .profile-block {
+    gap: 40px;
+  }
+}
+
 @media (max-width: 820px) {
   .profile-block {
     grid-template-columns: 1fr;
@@ -390,18 +403,35 @@ body {
   .profile-photo-col {
     position: static;
     flex-direction: row;
+    max-width: 460px;
+    margin: 0 auto;
   }
 
   .photo-main  { flex: 1; aspect-ratio: 3 / 4; }
   .photo-secondary { flex: 1; aspect-ratio: 3 / 4; }
 
   .header-inner {
+    height: auto;
+    min-height: 60px;
     padding: 0 20px;
     flex-direction: column;
-    height: auto;
+    justify-content: center;
     padding-top: 14px;
     padding-bottom: 14px;
     gap: 10px;
+  }
+
+  .header-brand {
+    width: 100%;
+    align-items: center;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 8px;
   }
 
   .main-wrapper {
@@ -413,18 +443,77 @@ body {
     gap: 12px;
     align-items: flex-start;
   }
+
+  .profile-info-col {
+    gap: 40px;
+  }
+
+  .bio-text,
+  .entry-desc {
+    max-width: none;
+  }
+
+  .meta-list li,
+  .contact-list li {
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-start;
+  }
+
+  .entry {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .entry-highlight {
+    padding: 16px;
+  }
 }
 
 @media (max-width: 520px) {
+  body {
+    font-size: 14px;
+  }
+
+  .header-inner {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .header-city {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+
   .site-nav {
-    gap: 16px;
+    gap: 10px 14px;
+  }
+
+  .site-nav a {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+
+  .main-wrapper {
+    padding: 18px 14px 44px;
   }
 
   .profile-photo-col {
     flex-direction: column;
+    max-width: none;
   }
 
-  .photo-secondary {
-    aspect-ratio: 16 / 9;
+  .photo-main {
+    aspect-ratio: 4 / 5;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+
+  .meta-key {
+    min-width: 0;
   }
 }
